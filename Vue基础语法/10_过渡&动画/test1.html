@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .xxx-enter-active,
+        .xxx-leave-active {
+            transition: opacity 1s;
+        }
+
+        .xxx-enter,
+        .xxx-leave-to {
+            opacity: 0;
+        }
+
+        .move-enter-active,
+        .move-leave-active {
+            transition: all 1s;
+        }
+
+        .move-enter,
+        .move-leave-to {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo">
+        <button @click='show=!show'>切换</button>
+        <transition name='xxx'>
+            <p v-show="show">梁先森</p>
+        </transition>
+    </div>
+    <hr>
+    <div id="demo1">
+        <button @click='show=!show'>切换</button>
+        <transition name='move'>
+            <p v-show="show">梁先森</p>
+        </transition>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#demo',
+            data: {
+                show: true
+            }
+        })
+        var vm1 = new Vue({
+            el: '#demo1',
+            data: {
+                show: true
+            }
+        })
+    </script>
+</body>
+
+</html>

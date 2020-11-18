@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo">
+        <form action="" @submit.prevent='test'>
+            用户名 <input type="text" v-model="username"><br>
+            密码 <input type="password" v-model="password"><br>
+            性别 <span>
+                <input type="radio" id="female" value="女" v-model="sex">
+                <label for="female">女</label>
+                <input type="radio" id="male" value="男" v-model="sex">
+                <label for="male">男</label>
+            </span><br>
+            <span>爱好</span>
+            <span>
+                <input type="checkbox" id="football" value="足球" v-model="likes">
+                <label for="football">足球</label>
+                <input type="checkbox" id="basketball" value="篮球" v-model="likes">
+                <label for="basketball">篮球</label>
+                <input type="checkbox" id="baseball" value="棒球" v-model="likes">
+                <label for="baseball">棒球</label>
+            </span><br>
+            <span>城市</span>
+            <select v-model="initId">
+                <option value="">未选择</option>
+                <option :value="city.id" v-for="(city, index) in allCities" :key="index">{{city.city}}</option>
+            </select><br>
+            <textarea name="" id="" cols="30" rows="10" v-model="text"></textarea><br>
+            <input type="submit" value="注册">
+
+        </form>
+
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#demo',
+            data: {
+                username: '',
+                password: '',
+                sex: '女',
+                likes: ['足球'],
+                allCities: [{ id: 1, city: 'bj' }, { id: 2, city: 'sh' }, { id: 3, city: 'cd' }],
+                initId: '',
+                text: ''
+
+            },
+            methods: {
+                test() {
+                    alert('已提交表单（已阻止默认行为）')
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

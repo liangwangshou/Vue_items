@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo">
+        <p v-text='msg'></p>
+        <p v-html="msg"></p>
+        <p v-cloak>{{msg}}</p>
+        <textarea name="" id="" cols="30" rows="10" ref="msg1"></textarea>
+        <button @click='test'>提示</button>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#demo',
+            data: {
+                msg: "<a href='http://www.baidu.com'>百度</a>"
+            }, methods: {
+                test() {
+                    alert(this.$refs.msg1.value)
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

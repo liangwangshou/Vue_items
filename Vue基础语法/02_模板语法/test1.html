@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <h2>1. 双大括号表达式</h2>
+        <p v-text="msg">{{msg}}</p>
+        <p v-html="msg">{{msg}}</p>
+
+        <h2>2. 指令一: 强制数据绑定</h2>
+        <a v-bind:href="url">{{url}}</a>
+        <h2>3. 指令二: 绑定事件监听</h2>
+        <button @click="test(msg)">点击</button>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                msg: "<a href='url'>url</a>",
+                url: 'https://www.baidu.com/'
+            },
+            methods: {
+                test(content) {
+                    alert(content)
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo">
+        <div>{{time}}</div>
+        <div>{{time|dateStr}}</div>
+        <div>{{time|dateStr('YYYY-MM-DD')}}</div>
+        <div>{{time|dateStr('HH:mm:ss')}}</div>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.25.3/moment.js"></script>
+    <script>
+        Vue.filter('dateStr', function (value, format) {
+            console.log(value, format);
+            return moment(value).format(format || 'YYYY-MM-DD HH:mm:ss')
+        })
+        var vm = new Vue({
+            el: '#demo',
+            data: {
+                time: new Date()
+            }
+        })
+    </script>
+</body>
+
+</html>

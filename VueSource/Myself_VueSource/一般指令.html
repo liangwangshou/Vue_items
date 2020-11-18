@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .classAA {
+            color: red;
+
+        }
+
+        .bb {
+            font-size: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="test">
+        <p v-text="msg"></p>
+        <p v-html="msg"></p>
+        <p v-class='aa' class="bb">{{name}}</p>
+    </div>
+    <script type="text/javascript" src="js/mvvm/compile.js"></script>
+    <script type="text/javascript" src="js/mvvm/mvvm.js"></script>
+    <script type="text/javascript" src="js/mvvm/observer.js"></script>
+    <script type="text/javascript" src="js/mvvm/watcher.js"></script>
+    <script>
+        const vm = new MVVM({
+            el: '#test',
+            data: {
+                msg: "<a href='http://www.baidu.com'>百度</a>",
+                aa: 'classAA',
+                name: 'liang'
+            },
+        })
+    </script>
+</body>
+
+</html>

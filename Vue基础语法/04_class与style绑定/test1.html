@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .aClass {
+            color: red;
+        }
+
+        .bClass {
+            color: blue !important;
+            font-size: large;
+        }
+
+        .cClass {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <h2>1 class绑定</h2>
+        <p :class='a'>这是a的样式 变量绑定class</p>
+        <p :class='{cClass:isShow,bClass:false}'>对象绑定class</p>
+        <p :class="['cClass','bClass']">数组绑定class</p>
+        <h2>2 style绑定</h2>
+        <p :style="{color:'purple',fontSize:fontSize+'px'}">style绑定</p>
+        <button @click='change'>test</button>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#root',
+            data: {
+                a: 'aClass',
+                isShow: true,
+                fontSize: '50'
+            },
+            methods: {
+                change() {
+                    this.a = 'bClass'
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

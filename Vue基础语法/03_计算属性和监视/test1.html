@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo">
+        姓: <input type="text" placeholder="First Name" v-model="firstName"><br> 名: <input type="text"
+            placeholder="Last Name" v-model="lastName"><br>
+        <!--fullName1是根据fistName和lastName计算产生-->
+        姓名1(单向): <input type="text" placeholder="Full Name1" v-model="fullName1"><br> 姓名2(单向): <input type="text"
+            placeholder="Full Name2" v-model="fullName2"><br> 姓名3(双向): <input type="text" placeholder="Full Name3"
+            v-model="fullName3"><br>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#demo',
+            data: {
+                firstName: 'A',
+                lastName: 'B',
+                // fullName1:'A B'
+                fullName2: 'A B'
+            },
+            computed: {
+                //什么时候执行  初始化显示/相关data属性数据1发生改变
+                fullName1: function () { //计算属性的方法  方法的返回值作为属性值
+                    console.log('fullName1');
+                    return this.firstName + ' ' + this.lastName
+                },
+                fullName3: {
+                    get() {
+                        return this.firstName + ' ' + this.lastName
+                    },
+                    set(value) {
+                        const name = value.split(' ')
+                        this.firstName = name[0]
+                        this.lastName = name[1]
+                    }
+                }
+            },
+            watch: {
+                firstName: function (value) { //firstName发生了改变
+                    this.fullName2 = value + '' + this.lastName
+                }
+            }
+        })
+        vm.$watch('lastName', function (value) {
+            this.fullName2 = this.firstName + '' + value
+        })
+        console.log(vm);
+    </script>
+</body>
+
+</html>

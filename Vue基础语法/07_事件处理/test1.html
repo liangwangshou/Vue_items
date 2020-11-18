@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo">
+        <h2>1 绑定监听 $event</h2>
+        <button @click='test1'>test1</button>
+        <button @click='test2(123)'> test2</button>
+        <button @click='test3'>test3</button>
+        <button @click="test4(111,$event)">test4</button>
+        <h2>2 时间修饰符（阻止默认，冒泡）</h2>
+        <a href="http://www.baidu.com" @click.prevent="test5">http://www.baidu.com</a>
+        <div style="height: 200px;width: 200px;background-color: rosybrown;" @click="test6">
+            <div style="height: 50px;width: 50px;background-color: red;" @click.stop='test7'></div>
+        </div>
+        <h2>3 按键修饰符</h2>
+        <input type="text" @keyup.enter='test8'>
+        <input type="text" @keyup.13='test8'>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#demo',
+            data: {
+
+            },
+            methods: {
+                test1() {
+                    alert('test1')
+                },
+                test2(x) {
+                    alert(x)
+                },
+                test3(event) {
+                    alert(event.target.innerHTML)
+                },
+                test4(x, event) {
+                    alert(x + event.target.innerHTML)
+                },
+                test5() {
+                    alert('事件已经阻止')
+                },
+                test6() {
+                    alert('out')
+                },
+                test7() {
+                    alert('in   冒泡已经阻止')
+                },
+                test8(event) {
+                    alert(event.target.value)
+                }
+
+            },
+        })
+    </script>
+</body>
+
+</html>
